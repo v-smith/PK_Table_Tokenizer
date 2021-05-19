@@ -1,0 +1,4 @@
+setuptools==52.0.0
+tokenizers==0.10.2
+
+ujson==4.0.2
