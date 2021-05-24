@@ -9,7 +9,7 @@
 hostname
 date
 
-PROJECT_DIR='/home/rmhivsm/Scratch/PKTokenizers'
+PROJECT_DIR='/home/rmhivsm/Scratch/Tokenizer'
 export PYTHONPATH=$PYTHONPATH:$PROJECT_DIR
 cd $PROJECT_DIR || exit
 source /share/apps/source_files/python/python-3.8.0.source
