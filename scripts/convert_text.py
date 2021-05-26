@@ -14,9 +14,9 @@ def read_jsonl(file_path):
                 continue
 
 
-all_tables = [x['html'].replace("\n", "#n#") for x in read_jsonl(file_path="all_pmcs/O-Zpmctables.jsonl")]
+all_tables = [x['html'].replace("\n", "#n#") for x in read_jsonl(file_path="../data/json/test_tableclass.jsonl")]
 
-with open('text_files/mergedtablesO-Z.txt', 'w') as f:
+with open("../data/textfiles/test_tableclass.txt", 'w') as f:
     for item in all_tables:
         f.write("%s\n" % item)
 
