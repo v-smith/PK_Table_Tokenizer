@@ -1,8 +1,5 @@
 import re
 
-fin = open("../data/textfiles/alltablesNotest.txt", "rt")
-fout = open("../data/textfiles/outtext.txt", "wt")
-
 splitters = {'>': ' ', '<': ' '}
 
 def replace_all(text, dic):
@@ -10,11 +7,11 @@ def replace_all(text, dic):
 		text = text.replace(i, j)
 	return text
 
-for line in fin:
-	line = replace_all(line, splitters)
-	line = re.sub(r"\{.*?\}", " ", line)
-	fout.write(line)
+fout = open("../data/textfiles/outtext.txt", "wt")
 
-fin.close()
-fout.close()
+with open(input_file) as file:
+	for line in file:
+		line = re.sub(r"\<style>(.*?)\</style>", ' ', line)
+		line = replace_all(line, splitters)
+		fout.write(line)
 

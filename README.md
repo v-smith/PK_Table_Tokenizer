@@ -2,9 +2,29 @@
 
 Scripts to: 
 1. Convert Jsonl files to txt
-2. Preprocess files 
 ```
+#convert jsonl file to txt file 
+python convert_text.py
+
+#concatenate text files (for large files) 
+python concat_txt_files.py
+```
+2. Preprocess files - N.B. typer files to use from command line with different inputs (useful for remote machines) 
+```
+#find unique tokens using regex
 python preprocess_txt_typer.py --input-file alltablesNotest.txt --output-file unique_html_tokens.csv
+
+#check unique tokens using beautiful soup
+python BSParserTyper.py --input-file alltablesNotest.txt --output-file bs_uniquie_tokens.csv
+
+#remove html from files
+python remove_html_typer.py --input-file alltablesNotest.txt --output-file alltablesNotestNohtml.txt
+python remove_html_typer.py --input-file ../data/textfiles/text.txt --output-file ../data/out_html.txt
+
+#split file on html tags 
+python split_txt_typer.py --input-file alltablesNotest.txt --output-file alltablesNotestNohtml.txt
+python split_txt_typer.py --input-file ../data/textfiles/text.txt --output-file ../data/out_split.txt
+
 ```
 3. Train SentencePiece Tokenizer with all pubmed data 
 4. a) Run typer file to train SentencePiece from command line (or on myriad) and allow change of vocab size etc: 
