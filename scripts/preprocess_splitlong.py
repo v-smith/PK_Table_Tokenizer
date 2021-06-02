@@ -1,9 +1,9 @@
 import re
 
-fin = open("../data/text_files/alltables.txt", "rt")
-fout = open("../data/text_files/outalltables.txt", "wt")
+fin = open("../data/textfiles/alltablesNotest.txt", "rt")
+fout = open("../data/textfiles/outtext.txt", "wt")
 
-splitters = {'>': ' > ', '<': ' < '}
+splitters = {'>': ' ', '<': ' '}
 
 def replace_all(text, dic):
 	for i, j in splitters.items():
@@ -11,7 +11,9 @@ def replace_all(text, dic):
 	return text
 
 for line in fin:
-	fout.write(replace_all(line, splitters))
+	line = replace_all(line, splitters)
+	line = re.sub(r"\{.*?\}", " ", line)
+	fout.write(line)
 
 fin.close()
 fout.close()

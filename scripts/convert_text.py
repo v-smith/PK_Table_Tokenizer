@@ -14,10 +14,17 @@ def read_jsonl(file_path):
                 continue
 
 
-all_tables = [x['html'].replace("\n", "#n#") for x in read_jsonl(file_path="../data/json/test_tableclass.jsonl")]
+def write_to_text(input_json, out_file):
+    all_tables = [x['html'].replace("\n", "#n#") for x in read_jsonl(file_path=input_json)]
 
-with open("../data/textfiles/test_tableclass.txt", 'w') as f:
-    for item in all_tables:
-        f.write("%s\n" % item)
+    with open(out_file, 'w') as f:
+        for item in all_tables:
+            f.write("%s\n" % item)
 
-a = 1
+    print("done")
+
+write_to_text("../data/json/test_removed/A-BpmctablesNotest.jsonl", "../data/textfiles/A-BpmctablesNotest.txt")
+write_to_text("../data/json/test_removed/C-HpmctablesNotest.jsonl", "../data/textfiles/C-HpmctablesNotest.txt")
+write_to_text("../data/json/test_removed/I-NpmctablesNotest.jsonl", "../data/textfiles/I-NpmctablesNotest.txt")
+write_to_text("../data/json/test_removed/O-ZpmctablesNotest.jsonl", "../data/textfiles/O-ZpmctablesNotest.txt")
+
