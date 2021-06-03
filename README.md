@@ -25,6 +25,10 @@ python remove_html_typer.py --input-file ../data/textfiles/text.txt --output-fil
 python split_txt_typer.py --input-file alltablesNotest.txt --output-file alltablesNotestNohtml.txt
 python split_txt_typer.py --input-file ../data/textfiles/text.txt --output-file ../data/out_split.txt
 
+#split out only captions 
+python split_captions_typer.py --input-file alltablesNotest.txt --output-file captionsNotest.txt
+python split_captions_typer.py --input-file ../data/textfiles/text.txt --output-file ../data/out_captions.txt
+
 ```
 3. Train SentencePiece Tokenizer with all pubmed data 
 4. a) Run typer file to train SentencePiece from command line (or on myriad) and allow change of vocab size etc: 

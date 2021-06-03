@@ -5,7 +5,7 @@ with open('requirements.txt') as f:
 
 
 setup(
-    name="pktokenizers",
+    name="tokenizer",
     packages=find_packages(),
     install_requires=requirements
 )
