@@ -1,10 +1,13 @@
 from tokenizers import SentencePieceBPETokenizer
 
 tokenizer = SentencePieceBPETokenizer()
-tokenizer.train("alltables.txt", vocab_size=20000, min_frequency=3)
+tokenizer.train("../data/textfiles/PKtablesNotest_nohtml.txt", vocab_size=5000, min_frequency=3)
 
-tokenizer.save_pretrained("./models/tokenizer/")
+tokenizer.save("../data/tokenizers/tokenizerPKtablesNotestNohtml5000.json")
 
+print("done")
+
+'''
 example = "<!DOCTYPE html><html><body><h4>Demographics and disease characteristics of the subject who received at " \
           "least one dose of obinutuzumab</h4><head><style> table, th, td {border: 1px solid " \
           "black;}</style></head><body><table xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" " \
@@ -68,6 +71,6 @@ output = tokenizer.encode(example)
 for x in output.tokens:
     print(x)
 
-
+'''
 
 

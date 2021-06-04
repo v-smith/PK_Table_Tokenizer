@@ -23,8 +23,9 @@ def write_to_text(input_json, out_file):
 
     print("done")
 
-write_to_text("../data/json/test_removed/A-BpmctablesNotest.jsonl", "../data/textfiles/A-BpmctablesNotest.txt")
-write_to_text("../data/json/test_removed/C-HpmctablesNotest.jsonl", "../data/textfiles/C-HpmctablesNotest.txt")
-write_to_text("../data/json/test_removed/I-NpmctablesNotest.jsonl", "../data/textfiles/I-NpmctablesNotest.txt")
-write_to_text("../data/json/test_removed/O-ZpmctablesNotest.jsonl", "../data/textfiles/O-ZpmctablesNotest.txt")
+#write_to_text("../data/json/test_removed/A-BpmctablesNotest.jsonl", "../data/textfiles/A-BpmctablesNotest.txt")
+#write_to_text("../data/json/test_removed/C-HpmctablesNotest.jsonl", "../data/textfiles/C-HpmctablesNotest.txt")
+#write_to_text("../data/json/test_removed/I-NpmctablesNotest.jsonl", "../data/textfiles/I-NpmctablesNotest.txt")
+#write_to_text("../data/json/test_removed/O-ZpmctablesNotest.jsonl", "../data/textfiles/O-ZpmctablesNotest.txt")
 
+write_to_text("../data/json/test_removed/PKpmctablesNotest.jsonl", "../data/textfiles/PKpmctablesNotest.txt")

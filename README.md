@@ -19,19 +19,21 @@ python BSParserTyper.py --input-file alltablesNotest.txt --output-file bs_uniqui
 
 #remove html from files
 python remove_html_typer.py --input-file alltablesNotest.txt --output-file alltablesNotestNohtml.txt
-python remove_html_typer.py --input-file ../data/textfiles/text.txt --output-file ../data/out_html.txt
+python remove_html_typer.py --input-file ../data/textfiles/test_table.txt --output-file ../data/test_table_nohtml.txt
+python remove_html_typer.py --input-file ../data/textfiles/PKpmctablesNotest.txt --output-file ../data/textfiles/PKtablesNotest_nohtml.txt
 
 #split file on html tags 
 python split_txt_typer.py --input-file alltablesNotest.txt --output-file alltablesNotestNohtml.txt
-python split_txt_typer.py --input-file ../data/textfiles/text.txt --output-file ../data/out_split.txt
+python split_txt_typer.py --input-file ../data/textfiles/test_table.txt --output-file ../data/test_table_split.txt
+python split_txt_typer.py --input-file ../data/textfiles/PKpmctablesNotest.txt --output-file ../data/PKtablesNotest_split.txt
 
 #split out only captions 
 python split_captions_typer.py --input-file alltablesNotest.txt --output-file captionsNotest.txt
-python split_captions_typer.py --input-file ../data/textfiles/text.txt --output-file ../data/out_captions.txt
+python split_captions_typer.py --input-file ../data/textfiles/test_table.txt --output-file ../data/test_table_captions.txt
 
 ```
 3. Train SentencePiece Tokenizer with all pubmed data 
-4. a) Run typer file to train SentencePiece from command line (or on myriad) and allow change of vocab size etc: 
+a) Run typer file to train SentencePiece from command line (or on myriad) and allow change of vocab size etc: 
 ```
 python tokenizer_tables.py --input-file alltables.txt --output-dir . --vocab-size 10000 --min-fz 3 --tokenizer-name alltables
 python tokenizer_tables.py --input-file alltables.txt --output-dir . --vocab-size 5000 --min-fz 3 --tokenizer-name alltables
@@ -42,5 +44,9 @@ b) Or Run typer file in terminal natively in Pycharm:
 ```
 python tokenizer_typer.py --input-file ../data/textfiles/text.txt --output-dir ../data/textfiles/ --vocab-size 200 --min-fz 3 --tokenizer-name test
 ```
+4. Try out tokenizer
 
+```
+python try_tokenizer_typer.py --input-file "../data/tokenizers/tokenizeralltablesNotesNohtml10000.json" --input-string DOCTYPE html  html  body  h4  
+```
 
