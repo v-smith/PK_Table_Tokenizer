@@ -1,6 +1,7 @@
 # Tokenizer
 
-Scripts to: 
+Preprocess PubMed files and train SentencePience tokenizer on PubMed OA corpus and Pharmacokinetic Corpus from PubMed OA.
+
 1. Convert Jsonl files to txt
 ```
 #convert jsonl file to txt file 
