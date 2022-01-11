@@ -1,15 +1,16 @@
-# Tokenizer
+# PK Table Tokenizer
 
 Scripts to: 
-1. Convert Jsonl files to txt
-```
-#convert jsonl file to txt file 
+1. Convert JSONL files to TXT file 
+```          
 python convert_text.py
+```
 
-#concatenate text files (for large files) 
+2. Concatenate text files (for large files) 
+```
 python concat_txt_files.py
 ```
-2. Preprocess files - N.B. typer files to use from command line with different inputs (useful for remote machines) 
+3. Preprocess files before Tokenization - N.B. typer files to use from command line
 ```
 #find unique tokens using regex
 python preprocess_txt_typer.py --input-file alltablesNotest.txt --output-file unique_html_tokens.csv
@@ -32,8 +33,8 @@ python split_captions_typer.py --input-file alltablesNotest.txt --output-file ca
 python split_captions_typer.py --input-file ../data/textfiles/test_table.txt --output-file ../data/test_table_captions.txt
 
 ```
-3. Train SentencePiece Tokenizer with all pubmed data 
-a) Run typer file to train SentencePiece from command line (or on myriad) and allow change of vocab size etc: 
+4. Train SentencePiece Tokenizer with all pubmed data 
+a) Run typer file to train SentencePiece from command line (or on cluster) and allow change of vocab size etc: 
 ```
 python tokenizer_tables.py --input-file alltables.txt --output-dir . --vocab-size 10000 --min-fz 3 --tokenizer-name alltables
 python tokenizer_tables.py --input-file alltables.txt --output-dir . --vocab-size 5000 --min-fz 3 --tokenizer-name alltables
@@ -45,7 +46,6 @@ b) Or Run typer file in terminal natively in Pycharm:
 python tokenizer_typer.py --input-file ../data/textfiles/text.txt --output-dir ../data/textfiles/ --vocab-size 200 --min-fz 3 --tokenizer-name test
 ```
 4. Try out tokenizer
-
 ```
 python try_tokenizer_typer.py --input-file "../data/tokenizers/tokenizeralltablesNotesNohtml10000.json" --input-string DOCTYPE html  html  body  h4  
 ```
