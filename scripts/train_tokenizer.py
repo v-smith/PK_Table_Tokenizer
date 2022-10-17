@@ -1,25 +1,5 @@
 from tokenizers import SentencePieceBPETokenizer
 
-'''
-#tokens without < > 
-html_tokens = ['/td', '/tr', '/th', '/bold', '/italic', '/sup', '/xref', '/h4', '/head', '/table', '/body', '/html', '/tbody',
-             '/thead', '/sub', '/p', '/mml:mo', '/mml:mi', '/mml:mrow', '/mml:mn', '/mml:math', '/inline-formula', '/ext-link',
-             '/colgroup', '/list-item', '/tex-math', '/alternatives', '/underline', '/named-content', '/mml:msub', '/list', '/mml:mtext',
-             '/mml:msup', '/monospace', '/mml:msubsup', '/sc', '/label', '/mml:mover', '/mml:mfrac', '/mml:mstyle', '/styled-content', '/mml:mfenced',
-             '/mml:mtd', '/mml:mtr', '/abbrev', '/mml:munder', '/uri', '/mml:mtable', '/disp-formula', '/mml:semantics', '/mml:msqrt', '/sans-serif',
-             '/mml:munderover', '/alt-text', '/inline-graphic', '/mml:annotation', '/mml:mpadded', '/tfoot', '/private-char', '/strike', '/mml:mmultiscripts',
-             '/overline', '/chem-struct', '/preformat', '/email', '/roman', '/x', '/glyph-data', '/mml:menclose', '/chem-struct-wrap', '/graphic',
-             '/mml:mroot', '/code', '/disp-quote', '/title', '/mml:mphantom', '/copyright-holder', '/permissions', '/disp-formula-group', '/', '/fig',
-             '/funding-source', '/tb', '/= 1% vs.', 'td', 'tr', 'th', 'bold', 'italic', 'sup', 'xref', 'h4', 'head', 'table', 'body', 'html', 'tbody',
-             'thead', 'sub', 'p', 'mml:mo', 'mml:mi', 'mml:mrow', 'mml:mn', 'mml:math', 'inline-formula', 'ext-link', 'colgroup', 'list-item', 'tex-math',
-             'alternatives', 'underline', 'named-content', 'mml:msub', 'list', 'mml:mtext', 'mml:msup', 'monospace', 'mml:msubsup', 'sc', 'label', 'mml:mover',
-             'mml:mfrac', 'mml:mstyle', 'styled-content', 'mml:mfenced', 'mml:mtd', 'mml:mtr', 'abbrev', 'mml:munder', 'uri', 'mml:mtable', 'disp-formula',
-             'mml:semantics', 'mml:msqrt', 'sans-serif', 'mml:munderover', 'alt-text', 'inline-graphic', 'mml:annotation', 'mml:mpadded', 'tfoot',
-             'private-char', 'strike', 'mml:mmultiscripts', 'overline', 'chem-struct_preformat', 'email', 'roman', 'x', 'glyph-data', 'mml:menclose',
-             'chem-struct-wrap', 'graphic', 'mml:mroot', 'code', 'disp-quote', 'title', 'mml:mphantom', 'copyright-holder', 'permissions', 'disp-formula-group',
-             'fig', 'funding-source', 'tb', '= 1% vs.', '!DOCTYPE', """ align="left" """]
-'''
-#html tokens in full
 html_tokens= ['<h1>', '</h1>', '</td>', '</tr>', '</th>', '</bold>', '</italic>', '</sup>', '</xref>', '</h4>', '</head>', '</table>', '</body>', '</html>', '</tbody>', '</thead>', '</sub>', '</p>', '</mml:mo>', '</mml:mi>', '</mml:mrow>', '</mml:mn>', '</mml:math>', '</inline-formula>', '</ext-link>', '</colgroup>', '</list-item>', '</tex-math>', '</alternatives>', '</underline>', '</named-content>', '</mml:msub>', '</list>', '</mml:mtext>', '</mml:msup>', '</monospace>', '</mml:msubsup>', '</sc>', '</label>', '</mml:mover>', '</mml:mfrac>', '</mml:mstyle>', '</styled-content>', '</mml:mfenced>', '</mml:mtd>', '</mml:mtr>', '</abbrev>', '</mml:munder>', '</uri>', '</mml:mtable>', '</disp-formula>', '</mml:semantics>', '</mml:msqrt>', '</sans-serif>', '</mml:munderover>', '</alt-text>', '</inline-graphic>', '</mml:annotation>', '</mml:mpadded>', '</tfoot>', '</private-char>', '</strike>', '</mml:mmultiscripts>', '</overline>', '</chem-struct>', '</preformat>', '</email>', '</roman>', '</x>', '</glyph-data>', '</mml:menclose>', '</chem-struct-wrap>', '</graphic>', '</mml:mroot>', '</code>', '</disp-quote>', '</title>', '</mml:mphantom>', '</copyright-holder>', '</permissions>', '</disp-formula-group>', '</>', '</fig>', '</funding-source>', '</tb>', '</= 1% vs.>', '<td>', '<tr>', '<th>', '<bold>', '<italic>', '<sup>', '<xref>', '<h4>', '<head>', '<table>', '<body>', '<html>', '<tbody>', '<thead>', '<sub>', '<p>', '<mml:mo>', '<mml:mi>', '<mml:mrow>', '<mml:mn>', '<mml:math>', '<inline-formula>', '<ext-link>', '<colgroup>', '<list-item>', '<tex-math>', '<alternatives>', '<underline>', '<named-content>', '<mml:msub>', '<list>', '<mml:mtext>', '<mml:msup>', '<monospace>', '<mml:msubsup>', '<sc>', '<label>', '<mml:mover>', '<mml:mfrac>', '<mml:mstyle>', '<styled-content>', '<mml:mfenced>', '<mml:mtd>', '<mml:mtr>', '<abbrev>', '<mml:munder>', '<uri>', '<mml:mtable>', '<disp-formula>', '<mml:semantics>', '<mml:msqrt>', '<sans-serif>', '<mml:munderover>', '<alt-text>', '<inline-graphic>', '<mml:annotation>', '<mml:mpadded>', '<tfoot>', '<private-char>', '<strike>', '<mml:mmultiscripts>', '<overline>', '<chem-struct_preformat>', '<email>', '<roman>', '<x>', '<glyph-data>', '<mml:menclose>', '<chem-struct-wrap>', '<graphic>', '<mml:mroot>', '<code>', '<disp-quote>', '<title>', '<mml:mphantom>', '<copyright-holder>', '<permissions>', '<disp-formula-group>', '<fig>', '<funding-source>', '<tb>', '<= 1% vs.>', '<!DOCTYPE html>', '<align="left">', '<td align="left">', '<td align="left" colspan="5">']
 
 tokenizer = SentencePieceBPETokenizer()
@@ -28,6 +8,7 @@ tokenizer.train("../data/textfiles/PKtablesNotest_nohtml.txt", vocab_size=3000, 
 
 tokenizer.save("../data/tokenizers/tokenizerPKtablesSpecialTokens3000.json")
 
+#example
 example = "<!DOCTYPE html><html><body><h4>Demographics and disease characteristics of the subject who received at " \
           "least one dose of obinutuzumab</h4><head><style> table, th, td {border: 1px solid " \
           "black;}</style></head><body><table xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" " \
@@ -93,3 +74,23 @@ for x in output.tokens:
 
 
 
+
+'''
+#tokens without < > 
+html_tokens = ['/td', '/tr', '/th', '/bold', '/italic', '/sup', '/xref', '/h4', '/head', '/table', '/body', '/html', '/tbody',
+             '/thead', '/sub', '/p', '/mml:mo', '/mml:mi', '/mml:mrow', '/mml:mn', '/mml:math', '/inline-formula', '/ext-link',
+             '/colgroup', '/list-item', '/tex-math', '/alternatives', '/underline', '/named-content', '/mml:msub', '/list', '/mml:mtext',
+             '/mml:msup', '/monospace', '/mml:msubsup', '/sc', '/label', '/mml:mover', '/mml:mfrac', '/mml:mstyle', '/styled-content', '/mml:mfenced',
+             '/mml:mtd', '/mml:mtr', '/abbrev', '/mml:munder', '/uri', '/mml:mtable', '/disp-formula', '/mml:semantics', '/mml:msqrt', '/sans-serif',
+             '/mml:munderover', '/alt-text', '/inline-graphic', '/mml:annotation', '/mml:mpadded', '/tfoot', '/private-char', '/strike', '/mml:mmultiscripts',
+             '/overline', '/chem-struct', '/preformat', '/email', '/roman', '/x', '/glyph-data', '/mml:menclose', '/chem-struct-wrap', '/graphic',
+             '/mml:mroot', '/code', '/disp-quote', '/title', '/mml:mphantom', '/copyright-holder', '/permissions', '/disp-formula-group', '/', '/fig',
+             '/funding-source', '/tb', '/= 1% vs.', 'td', 'tr', 'th', 'bold', 'italic', 'sup', 'xref', 'h4', 'head', 'table', 'body', 'html', 'tbody',
+             'thead', 'sub', 'p', 'mml:mo', 'mml:mi', 'mml:mrow', 'mml:mn', 'mml:math', 'inline-formula', 'ext-link', 'colgroup', 'list-item', 'tex-math',
+             'alternatives', 'underline', 'named-content', 'mml:msub', 'list', 'mml:mtext', 'mml:msup', 'monospace', 'mml:msubsup', 'sc', 'label', 'mml:mover',
+             'mml:mfrac', 'mml:mstyle', 'styled-content', 'mml:mfenced', 'mml:mtd', 'mml:mtr', 'abbrev', 'mml:munder', 'uri', 'mml:mtable', 'disp-formula',
+             'mml:semantics', 'mml:msqrt', 'sans-serif', 'mml:munderover', 'alt-text', 'inline-graphic', 'mml:annotation', 'mml:mpadded', 'tfoot',
+             'private-char', 'strike', 'mml:mmultiscripts', 'overline', 'chem-struct_preformat', 'email', 'roman', 'x', 'glyph-data', 'mml:menclose',
+             'chem-struct-wrap', 'graphic', 'mml:mroot', 'code', 'disp-quote', 'title', 'mml:mphantom', 'copyright-holder', 'permissions', 'disp-formula-group',
+             'fig', 'funding-source', 'tb', '= 1% vs.', '!DOCTYPE', """ align="left" """]
+'''

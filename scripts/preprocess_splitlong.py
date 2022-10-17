@@ -1,11 +1,5 @@
 import re
-
-splitters = {'>': ' ', '<': ' '}
-
-def replace_all(text, dic):
-	for i, j in splitters.items():
-		text = text.replace(i, j)
-	return text
+from pk_tokenizer.utils import replace_all
 
 fout = open("../data/textfiles/outtext.txt", "wt")
 

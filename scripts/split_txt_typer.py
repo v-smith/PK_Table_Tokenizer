@@ -2,6 +2,7 @@
 import typer
 import re
 from tqdm import tqdm
+from pk_tokenizer.utils import replace_all
 
 def main(
         input_file: str = typer.Option(default="/Scratch/alltablesNotest.txt",
@@ -11,12 +12,6 @@ def main(
 
 ):
     splitters = {'>': ' ', '<': ' '}
-
-    def replace_all(text, dic):
-        for i, j in splitters.items():
-            text = text.replace(i, j)
-        return text
-
     fout = open(output_file, "wt")
 
     with open(input_file) as file:

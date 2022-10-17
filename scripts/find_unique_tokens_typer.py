@@ -3,6 +3,7 @@ import typer
 import re
 from collections import Counter
 import pandas as pd
+from pk_tokenizer.utils import find_line_tokens
 
 
 def main(
@@ -12,21 +13,10 @@ def main(
                                     help="Output text file")
 
 ):
-        file = open(input_file, "r")
+        unique_tokens = find_line_tokens(input_file=input_file)
 
-        tokens = []
-        for line in file:
-            line_tokens = re.findall(r"\</(?:[^<>])*\>", line,
-                                     flags=re.VERBOSE)  # r"\<(?:[^<>])*\>"  #r"(?<=\<)(.*?)(?=\>)" #r"\<.*?\>"
-            tokens.extend(line_tokens)
-
-        frequencies = Counter(tokens).most_common()
-        pd.DataFrame(frequencies).to_csv(output_file)
-        unique_tokens = sorted(list(set(tokens)))
-        print(f"unique tokens: {len(unique_tokens)}")
-
-        #with open(output_file, "w") as output:
-            #output.write(str(unique_tokens))
+        with open(file=output_file, encoding="w") as output:
+            output.write(str(unique_tokens))
 
 if __name__ == '__main__':
     typer.run(main)
